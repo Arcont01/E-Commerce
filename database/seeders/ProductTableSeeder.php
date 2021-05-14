@@ -16,7 +16,7 @@ class ProductTableSeeder extends Seeder
      */
     public function run()
     {
-        $products = factory(Product::class, 12)->create();
+        $products = Product::factory()->count(12)->create();
         $faker = Faker::create();
         $imageUrl = $faker->imageUrl(640, 480, 'food');
         foreach ($products as $product) {
