@@ -2,8 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\Product;
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
+use Illuminate\Support\Facades\Artisan;
 
 class ProductTableSeeder extends Seeder
 {
@@ -14,7 +16,7 @@ class ProductTableSeeder extends Seeder
      */
     public function run()
     {
-        $products = factory(\App\Product::class, 12)->create();
+        $products = factory(Product::class, 12)->create();
         $faker = Faker::create();
         $imageUrl = $faker->imageUrl(640, 480, 'food');
         foreach ($products as $product) {
