@@ -33,15 +33,6 @@ class LoginController extends Controller
      */
     protected $redirectTo = RouteServiceProvider::HOME;
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('guest')->except('logout');
-    }
 
     /**
      * Login
@@ -96,8 +87,7 @@ class LoginController extends Controller
      */
     public function logout(Request $request)
     {
-        $token = $request->bearerToken();
-        $request->user()->tokens()->where('token', 'like', $token)->delete();
+        $request->user()->currentAccessToken()->delete();
         return response([
             'status' => 'success',
             'message' => 'OK',

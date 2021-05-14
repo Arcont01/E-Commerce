@@ -20,7 +20,7 @@ class ProductTableSeeder extends Seeder
         $faker = Faker::create();
         $imageUrl = $faker->imageUrl(640, 480, 'food');
         foreach ($products as $product) {
-            $product->addMediaFromUrl($imageUrl)->toMediaCollection();
+            $product->addMediaFromUrl($imageUrl)->toMediaCollection('images');
         }
         Artisan::call('storage:link');
     }

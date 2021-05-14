@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ProductCollection;
 use App\Http\Resources\ProductResource;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -18,7 +19,13 @@ class ProductController extends Controller
      */
     public function index()
     {
-
+        return response([
+            'status' => 'success',
+            'message' => 'ok',
+            'data' => [
+                'products' => Product::paginate(10)
+            ]
+        ]);
     }
 
     /**
@@ -110,7 +117,7 @@ class ProductController extends Controller
      *
      * @param \Illuminate\Http\Request $request
      * @param \App\Models\Product $product
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\JsonResponse|\Illuminate\Http\Response
      */
     public function update(Request $request, $slug)
     {
@@ -124,7 +131,25 @@ class ProductController extends Controller
                 ], 404);
             }
 
-            $product->update([
+
+            $validation = Validator::make($request->all(), [
+                'name' => ['required', 'string', 'max:191'],
+                'description' => ['required', 'string'],
+                'price' => ['required', 'numeric'],
+                'status' => ['required', 'boolean'],
+                'image' => ['required', 'image', 'mimes:jpg,png', 'max:5120']
+            ]);
+
+            if($validation->fails()){
+                return response()->json([
+                    'status' => 'error',
+                    'message' => $validation -> errors() -> first(),
+                    'data' => $validation -> errors(),
+                ], 400);
+            }
+
+            $product = $product->first();
+            $product = $product->update([
                 'name' => $request->name,
                 'description' => $request->description,
                 'price' => $request->description,
@@ -135,7 +160,7 @@ class ProductController extends Controller
                 'status' => 'success',
                 'message' => "The product {$product->name} has been updated",
                 'data' => [
-                    'product' => new ProductResource($product->first())
+                    'product' => new ProductResource($product)
                 ]
             ]);
 

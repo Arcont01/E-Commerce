@@ -34,16 +34,6 @@ class RegisterController extends Controller
     protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('guest');
-    }
-
-    /**
      * Register
      *
      * @param Request $request
@@ -52,10 +42,9 @@ class RegisterController extends Controller
      */
     public function register(Request $request)
     {
-
         $validation = Validator::make($request -> all(), [
             'name' => ['required', 'max:191', 'string'],
-            'email' => ['required', 'email', 'max:191', 'unique:users,email'],
+            'email' => ['required', 'email', 'max:191'],
             'password' => ['required', 'confirmed', 'min:8'],
         ]);
 
