@@ -1,13 +1,13 @@
 import Vue from 'vue';
 import store from '../store'
 import Router from 'vue-router';
-import {constantRoutes} from "./modules/app";
+import routes from "./modules/app";
 
 Vue.use(Router)
 
 const createRouter = () => new Router({
     mode: 'history',
-    routes: constantRoutes
+    routes
 })
 
 const router = createRouter();
@@ -38,3 +38,5 @@ router.beforeEach((to, from, next) => {
         next()
     }
 })
+
+export default router;

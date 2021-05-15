@@ -1,5 +1,7 @@
 <template>
-
+    <main role="main">
+        productos
+    </main>
 </template>
 
 <script>

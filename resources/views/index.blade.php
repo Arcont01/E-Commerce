@@ -8,7 +8,7 @@
 </head>
 <body>
 <div id="app">
-    <router-view :key="$route.fullPath"></router-view>
+    <app></app>
 </div>
 <script src="{{asset(mix('js/app.js'))}}" type="application/javascript"></script>
 </body>

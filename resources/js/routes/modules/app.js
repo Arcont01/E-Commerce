@@ -1,23 +1,29 @@
-export const constantRoutes = [
+const routes = [
     {
         path: '/',
-        component: () => import('../../pages/index'),
-        name: 'home'
-    },
-    {
-        path: '/products',
-        component: () => import('../../pages/products/index'),
-        name: 'products',
-    },
-    {
-        path: '/products/:slug',
-        name: 'show-product',
-        component: () => import('../../pages/products/detail')
-    },
-    {
-        path: '/checkout',
-        component: () => import('../../pages/cart/checkout'),
-        name: 'checkout',
+        component: () => import('../../layouts/default'),
+        name: 'home',
+        children: [
+            {
+                path: "",
+                component: () => import('../../pages/index')
+            },
+            {
+                path: '/products',
+                component: () => import('../../pages/products/index'),
+                name: 'products',
+            },
+            {
+                path: '/products/:slug',
+                name: 'show-product',
+                component: () => import('../../pages/products/detail')
+            },
+            {
+                path: '/checkout',
+                component: () => import('../../pages/cart/checkout'),
+                name: 'checkout',
+            }
+        ]
     },
     {
         path: '/login',
@@ -26,7 +32,7 @@ export const constantRoutes = [
     },
     {
         path: '/admin',
-        component: () => import('../../pages/admin/index'),
+        component: () => import('../../layouts/admin'),
         name: 'admin',
         meta: {
             requiresAuth: true,
@@ -62,3 +68,5 @@ export const constantRoutes = [
         redirect: 'login',
     }
 ];
+
+export default routes;

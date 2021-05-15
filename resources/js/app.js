@@ -5,15 +5,18 @@
  */
 
 require('./bootstrap');
-window.Vue = require('vue');
+import Vue from 'vue';
+import VueRouter from 'vue-router';
 import router from "./routes";
 import store from './store';
+import App from './App.vue';
 import { BootstrapVue } from 'bootstrap-vue'
 
-Vue.config.productionTip = false;
+Vue.use(VueRouter)
 Vue.use(BootstrapVue)
 
 const app = new Vue({
     store,
-    router
+    router,
+    components: {App}
 }).$mount('#app');
