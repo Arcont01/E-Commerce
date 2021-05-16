@@ -2,16 +2,11 @@ const routes = [
     {
         path: '/',
         component: () => import('../../layouts/default'),
-        name: 'home',
+        name: 'index',
         children: [
             {
                 path: "",
                 component: () => import('../../pages/index')
-            },
-            {
-                path: '/products',
-                component: () => import('../../pages/products/index'),
-                name: 'products',
             },
             {
                 path: '/products/:slug',

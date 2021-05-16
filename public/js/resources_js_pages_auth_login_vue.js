@@ -15,6 +15,34 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "login"
 });
@@ -109,7 +137,118 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div")
+  return _c(
+    "main",
+    { attrs: { role: "main" } },
+    [
+      _c(
+        "b-container",
+        { attrs: { fluid: "" } },
+        [
+          _c(
+            "b-row",
+            {
+              staticClass: "vh-100 h-100",
+              attrs: { "align-h": "center", "align-v": "center" }
+            },
+            [
+              _c(
+                "b-col",
+                { attrs: { lg: "5" } },
+                [
+                  _c(
+                    "b-card",
+                    {
+                      scopedSlots: _vm._u([
+                        {
+                          key: "header",
+                          fn: function() {
+                            return [
+                              _c(
+                                "h1",
+                                {
+                                  staticClass:
+                                    "mb-0 text-center font-weight-bold"
+                                },
+                                [_vm._v("Login")]
+                              )
+                            ]
+                          },
+                          proxy: true
+                        }
+                      ])
+                    },
+                    [
+                      _vm._v(" "),
+                      _c(
+                        "b-form",
+                        [
+                          _c(
+                            "b-form-group",
+                            [
+                              _c("b-form-input", {
+                                attrs: { placeholder: "E-mail", type: "email" }
+                              })
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "b-form-group",
+                            [
+                              _c("b-form-input", {
+                                attrs: {
+                                  type: "password",
+                                  placeholder: "Password"
+                                }
+                              })
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "b-row",
+                            { attrs: { "align-h": "center" } },
+                            [
+                              _c(
+                                "b-col",
+                                { attrs: { lg: "6" } },
+                                [
+                                  _c(
+                                    "b-button",
+                                    {
+                                      attrs: {
+                                        variant: "primary",
+                                        type: "submit",
+                                        block: ""
+                                      }
+                                    },
+                                    [_vm._v("Login")]
+                                  )
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

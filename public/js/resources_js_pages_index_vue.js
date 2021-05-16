@@ -17,6 +17,37 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "index"
 });
@@ -111,7 +142,131 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("main", [_vm._v("\n    index\n")])
+  return _c(
+    "main",
+    { attrs: { role: "main" } },
+    [
+      _c("b-jumbotron", {
+        scopedSlots: _vm._u([
+          {
+            key: "header",
+            fn: function() {
+              return [
+                _c(
+                  "h1",
+                  { staticClass: "font-weight-bold text-center display-4" },
+                  [_vm._v("All Products")]
+                )
+              ]
+            },
+            proxy: true
+          }
+        ])
+      }),
+      _vm._v(" "),
+      _c(
+        "b-container",
+        { staticClass: "mb-5" },
+        [
+          _c(
+            "b-row",
+            { attrs: { "align-h": "between" } },
+            [
+              _c(
+                "b-col",
+                { attrs: { lg: "4" } },
+                [
+                  _c(
+                    "b-card",
+                    { staticClass: "border-0", attrs: { "no-body": "" } },
+                    [
+                      _c(
+                        "b-container",
+                        { attrs: { fluid: "" } },
+                        [
+                          _c(
+                            "b-row",
+                            { attrs: { "align-h": "center" } },
+                            [
+                              _c("b-col", { attrs: { cols: "12" } }),
+                              _vm._v(" "),
+                              _c(
+                                "b-col",
+                                {
+                                  staticClass: "text-center",
+                                  attrs: { cols: "12" }
+                                },
+                                [
+                                  _c(
+                                    "h3",
+                                    { staticClass: "font-weight-bold" },
+                                    [_vm._v("Tittle")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("p", [_vm._v("$price")])
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "b-col",
+                                { attrs: { cols: "12" } },
+                                [
+                                  _c(
+                                    "b-button",
+                                    {
+                                      staticClass: "mb-4",
+                                      attrs: {
+                                        squared: "",
+                                        block: "",
+                                        variant: "primary"
+                                      }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                                    ADD TO CART\n                                "
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "b-button",
+                                    {
+                                      attrs: {
+                                        squared: "",
+                                        block: "",
+                                        variant: "link"
+                                      }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                                    READ MORE\n                                "
+                                      )
+                                    ]
+                                  )
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
