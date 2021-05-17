@@ -14,6 +14,7 @@ import { BootstrapVue } from 'bootstrap-vue'
 import { ValidationObserver, ValidationProvider, extend, localize } from 'vee-validate'
 import * as rules from 'vee-validate/dist/rules'
 import en from 'vee-validate/dist/locale/en.json'
+import Notifications from 'vue-notification'
 
 Vue.config.productionTip = false
 
@@ -23,6 +24,7 @@ Object.keys(rules).forEach(rule => {
 localize('en', en)
 Vue.component('ValidationObserver', ValidationObserver)
 Vue.component('ValidationProvider', ValidationProvider)
+Vue.use(Notifications);
 Vue.use(VueRouter)
 Vue.use(BootstrapVue)
 

@@ -76,6 +76,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "detail",
   data: function data() {
@@ -102,19 +104,61 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 3:
                 _this.product = _context.sent.data.data.product;
-                _context.next = 8;
+                _context.next = 9;
                 break;
 
               case 6:
                 _context.prev = 6;
                 _context.t0 = _context["catch"](0);
 
-              case 8:
+                _this.$router.push({
+                  name: "not-found"
+                });
+
+              case 9:
               case "end":
                 return _context.stop();
             }
           }
         }, _callee, null, [[0, 6]]);
+      }))();
+    },
+    addToCart: function addToCart() {
+      var _this2 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.prev = 0;
+                _context2.next = 3;
+                return _this2.$store.dispatch('addToCart', {
+                  product: _this2.product,
+                  quantity: _this2.form.selected
+                });
+
+              case 3:
+                _this2.$notify({
+                  group: 'notify',
+                  type: 'success',
+                  title: 'Added to cart',
+                  text: _this2.product.name
+                });
+
+                _context2.next = 8;
+                break;
+
+              case 6:
+                _context2.prev = 6;
+                _context2.t0 = _context2["catch"](0);
+
+              case 8:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, null, [[0, 6]]);
       }))();
     }
   },
@@ -249,15 +293,23 @@ var render = function() {
                   _vm._v(" "),
                   _c("p", { staticClass: "font-weight-bold text-danger" }, [
                     _vm._v(
-                      "\n          " +
+                      "\n                    " +
                         _vm._s(_vm.product.formatted_price) +
-                        "\n        "
+                        "\n                "
                     )
                   ]),
                   _vm._v(" "),
                   _c(
                     "b-form",
-                    { staticClass: "mb-4" },
+                    {
+                      staticClass: "mb-4",
+                      on: {
+                        submit: function($event) {
+                          $event.preventDefault()
+                          return _vm.addToCart($event)
+                        }
+                      }
+                    },
                     [
                       _c(
                         "b-form-row",
@@ -301,7 +353,11 @@ var render = function() {
                                     block: ""
                                   }
                                 },
-                                [_vm._v("add to cart")]
+                                [
+                                  _vm._v(
+                                    "add to cart\n                            "
+                                  )
+                                ]
                               )
                             ],
                             1
@@ -334,7 +390,11 @@ var render = function() {
                                             },
                                             on: { click: navigate }
                                           },
-                                          [_vm._v("check out")]
+                                          [
+                                            _vm._v(
+                                              "check out\n                                "
+                                            )
+                                          ]
                                         )
                                       ]
                                     }
@@ -353,9 +413,9 @@ var render = function() {
                   _vm._v(" "),
                   _c("p", [
                     _vm._v(
-                      "\n          " +
+                      "\n                    " +
                         _vm._s(_vm.product.description) +
-                        "\n        "
+                        "\n                "
                     )
                   ])
                 ],
