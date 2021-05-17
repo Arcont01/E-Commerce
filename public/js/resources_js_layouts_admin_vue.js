@@ -236,7 +236,29 @@ var render = function() {
         "b-navbar",
         { attrs: { toggleable: "lg", type: "dark", variant: "primary" } },
         [
-          _c("b-navbar-brand", { attrs: { href: "#" } }, [_vm._v("NavBar")]),
+          _c("router-link", {
+            attrs: { custom: "", to: { name: "admin" } },
+            scopedSlots: _vm._u([
+              {
+                key: "default",
+                fn: function(ref) {
+                  var navigate = ref.navigate
+                  var isActive = ref.isActive
+                  var href = ref.href
+                  return [
+                    _c(
+                      "b-navbar-brand",
+                      {
+                        attrs: { href: href, active: isActive },
+                        on: { click: navigate }
+                      },
+                      [_vm._v("Exam Admin")]
+                    )
+                  ]
+                }
+              }
+            ])
+          }),
           _vm._v(" "),
           _c("b-navbar-toggle", { attrs: { target: "nav-collapse" } }),
           _vm._v(" "),
@@ -247,13 +269,53 @@ var render = function() {
               _c(
                 "b-navbar-nav",
                 [
-                  _c("b-nav-item", { attrs: { to: { name: "login" } } }, [
-                    _vm._v("Link")
-                  ]),
+                  _c("router-link", {
+                    attrs: { custom: "", to: { name: "user-admin" } },
+                    scopedSlots: _vm._u([
+                      {
+                        key: "default",
+                        fn: function(ref) {
+                          var navigate = ref.navigate
+                          var isActive = ref.isActive
+                          var href = ref.href
+                          return [
+                            _c(
+                              "b-nav-item",
+                              {
+                                attrs: { href: href, active: isActive },
+                                on: { click: navigate }
+                              },
+                              [_vm._v("Users")]
+                            )
+                          ]
+                        }
+                      }
+                    ])
+                  }),
                   _vm._v(" "),
-                  _c("b-nav-item", { attrs: { href: "#", disabled: "" } }, [
-                    _vm._v("Disabled")
-                  ])
+                  _c("router-link", {
+                    attrs: { custom: "", to: { name: "products-admin" } },
+                    scopedSlots: _vm._u([
+                      {
+                        key: "default",
+                        fn: function(ref) {
+                          var navigate = ref.navigate
+                          var isActive = ref.isActive
+                          var href = ref.href
+                          return [
+                            _c(
+                              "b-nav-item",
+                              {
+                                attrs: { href: href, active: isActive },
+                                on: { click: navigate }
+                              },
+                              [_vm._v("Products")]
+                            )
+                          ]
+                        }
+                      }
+                    ])
+                  })
                 ],
                 1
               )

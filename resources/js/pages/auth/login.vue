@@ -7,22 +7,55 @@
             <template #header>
               <h1 class="mb-0 text-center font-weight-bold">Login</h1>
             </template>
-            <b-form>
-              <b-form-group>
-                <b-form-input placeholder="E-mail" type="email"></b-form-input>
-              </b-form-group>
-              <b-form-group>
-                <b-form-input
-                  type="password"
-                  placeholder="Password"
-                ></b-form-input>
-              </b-form-group>
-              <b-row align-h="center">
+            <ValidationObserver v-slot="{invalid}">
+              <b-form @submit.prevent="sendLogin">
+                <ValidationProvider
+                  name="E-Mail"
+                  rules="required|email"
+                  v-slot="{ valid, errors }"
+                >
+                  <b-form-group>
+                    <b-form-input
+                      v-model="form.email"
+                      placeholder="E-mail"
+                      type="email"
+                      :state="errors[0] ? false : valid ? true : null"
+                    ></b-form-input>
+                    <b-form-invalid-feedback>{{
+                      errors[0]
+                    }}</b-form-invalid-feedback>
+                  </b-form-group>
+                </ValidationProvider>
+                <ValidationProvider
+                  name="Password"
+                  rules="required"
+                  v-slot="{ valid, errors }"
+                >
+                  <b-form-group>
+                    <b-form-input
+                      :state="errors[0] ? false : valid ? true : null"
+                      v-model="form.password"
+                      type="password"
+                      placeholder="Password"
+                    ></b-form-input>
+                    <b-form-invalid-feedback>{{
+                      errors[0]
+                    }}</b-form-invalid-feedback>
+                  </b-form-group>
+                </ValidationProvider>
+                <b-row align-h="center">
                   <b-col lg="6">
-                      <b-button variant="primary" type="submit" block>Login</b-button>
+                    <b-button
+                      variant="primary"
+                      :disabled="invalid"
+                      type="submit"
+                      block
+                      >Login</b-button
+                    >
                   </b-col>
-              </b-row>
-            </b-form>
+                </b-row>
+              </b-form>
+            </ValidationObserver>
           </b-card>
         </b-col>
       </b-row>
@@ -33,8 +66,23 @@
 <script>
 export default {
   name: "login",
+  data() {
+    return {
+      form: {
+        email: "",
+        password: ""
+      }
+    }
+  },
+  methods: {
+    sendLogin() {
+        try {
+            this.$store.dispatch('auth/retrieveToken', this.form)
+        } catch (error) {
+            console.error(error);
+        }
+
+    },
+  },
 };
 </script>
-
-<style scoped>
-</style>

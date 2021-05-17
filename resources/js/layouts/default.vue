@@ -1,7 +1,7 @@
 <template>
     <div>
         <app-header></app-header>
-        <router-view :name="home"></router-view>
+        <router-view></router-view>
         <app-footer></app-footer>
     </div>
 </template>

@@ -28,6 +28,36 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "AppHeader"
 });
@@ -344,9 +374,29 @@ var render = function() {
           }
         },
         [
-          _c("b-navbar-brand", { attrs: { to: { name: "index" } } }, [
-            _vm._v("Exam")
-          ]),
+          _c("router-link", {
+            attrs: { to: { name: "index" }, custom: "" },
+            scopedSlots: _vm._u([
+              {
+                key: "default",
+                fn: function(ref) {
+                  var isActive = ref.isActive
+                  var navigate = ref.navigate
+                  var href = ref.href
+                  return [
+                    _c(
+                      "b-navbar-brand",
+                      {
+                        attrs: { active: isActive, href: href },
+                        on: { click: navigate }
+                      },
+                      [_vm._v("Exam")]
+                    )
+                  ]
+                }
+              }
+            ])
+          }),
           _vm._v(" "),
           _c("b-navbar-toggle", { attrs: { target: "nav-collapse" } }),
           _vm._v(" "),
@@ -358,13 +408,53 @@ var render = function() {
                 "b-navbar-nav",
                 { staticClass: "ml-auto" },
                 [
-                  _c("b-nav-item", { attrs: { to: { name: "index" } } }, [
-                    _vm._v("Home")
-                  ]),
+                  _c("router-link", {
+                    attrs: { to: { name: "index" }, custom: "" },
+                    scopedSlots: _vm._u([
+                      {
+                        key: "default",
+                        fn: function(ref) {
+                          var isActive = ref.isActive
+                          var navigate = ref.navigate
+                          var href = ref.href
+                          return [
+                            _c(
+                              "b-nav-item",
+                              {
+                                attrs: { active: isActive, href: href },
+                                on: { click: navigate }
+                              },
+                              [_vm._v("Home")]
+                            )
+                          ]
+                        }
+                      }
+                    ])
+                  }),
                   _vm._v(" "),
-                  _c("b-nav-item", { attrs: { to: { name: "cart" } } }, [
-                    _vm._v("Cart")
-                  ])
+                  _c("router-link", {
+                    attrs: { to: { name: "checkout" }, custom: "" },
+                    scopedSlots: _vm._u([
+                      {
+                        key: "default",
+                        fn: function(ref) {
+                          var isActive = ref.isActive
+                          var navigate = ref.navigate
+                          var href = ref.href
+                          return [
+                            _c(
+                              "b-nav-item",
+                              {
+                                attrs: { active: isActive, href: href },
+                                on: { click: navigate }
+                              },
+                              [_vm._v("Cart")]
+                            )
+                          ]
+                        }
+                      }
+                    ])
+                  })
                 ],
                 1
               )
@@ -406,7 +496,7 @@ var render = function() {
     [
       _c("app-header"),
       _vm._v(" "),
-      _c("router-view", { attrs: { name: _vm.home } }),
+      _c("router-view"),
       _vm._v(" "),
       _c("app-footer")
     ],

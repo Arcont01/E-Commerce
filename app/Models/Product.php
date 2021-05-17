@@ -18,16 +18,21 @@ class Product extends Model implements HasMedia
     ];
 
     protected $appends = [
-        'image'
+        'image', 'formatted_price'
     ];
 
     public function getImageAttribute()
     {
-        if($this->getMedia('images')->isNotEmpty()){
+        if ($this->getMedia('images')->isNotEmpty()) {
             return $this->getMedia('images')[0]->getFullUrl();
-        }else {
+        } else {
             return null;
         }
+    }
+
+    public function getFormattedPriceAttribute()
+    {
+        return '$ ' . number_format($this->price, 2, '.', ',');
     }
 
     protected static function boot()

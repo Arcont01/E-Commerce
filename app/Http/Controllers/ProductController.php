@@ -23,7 +23,7 @@ class ProductController extends Controller
             'status' => 'success',
             'message' => 'ok',
             'data' => [
-                'products' => Product::paginate(10)
+                'products' => Product::where('status', true)->paginate(10)
             ]
         ]);
     }

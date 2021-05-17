@@ -42,7 +42,7 @@ export default {
                     email: credentials.email,
                     password: credentials.password
                 });
-                const token = response.data.access_token;
+                const token = response.data.data.token;
                 if(localStorage.getItem('access_token')){
                     localStorage.removeItem('access_token');
                 }

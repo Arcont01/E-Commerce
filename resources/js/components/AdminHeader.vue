@@ -1,14 +1,38 @@
 <template>
   <div>
     <b-navbar toggleable="lg" type="dark" variant="primary">
-      <b-navbar-brand href="#">NavBar</b-navbar-brand>
+      <router-link
+        custom
+        :to="{ name: 'admin' }"
+        v-slot="{ navigate, isActive, href }"
+      >
+        <b-navbar-brand :href="href" @click="navigate" :active="isActive"
+          >Exam Admin</b-navbar-brand
+        >
+      </router-link>
 
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
-          <b-nav-item :to="{name: 'login'}">Link</b-nav-item>
-          <b-nav-item href="#" disabled>Disabled</b-nav-item>
+          <router-link
+            custom
+            :to="{ name: 'user-admin' }"
+            v-slot="{ navigate, isActive, href }"
+          >
+            <b-nav-item @click="navigate" :href="href" :active="isActive"
+              >Users</b-nav-item
+            >
+          </router-link>
+          <router-link
+            custom
+            :to="{ name: 'products-admin' }"
+            v-slot="{ navigate, isActive, href }"
+          >
+            <b-nav-item @click="navigate" :href="href" :active="isActive"
+              >Products</b-nav-item
+            >
+          </router-link>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>

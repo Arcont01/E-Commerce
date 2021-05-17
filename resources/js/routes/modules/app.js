@@ -1,26 +1,5 @@
 const routes = [
     {
-        path: '/',
-        component: () => import('../../layouts/default'),
-        name: 'index',
-        children: [
-            {
-                path: "",
-                component: () => import('../../pages/index')
-            },
-            {
-                path: '/products/:slug',
-                name: 'show-product',
-                component: () => import('../../pages/products/detail')
-            },
-            {
-                path: '/checkout',
-                component: () => import('../../pages/cart/checkout'),
-                name: 'checkout',
-            }
-        ]
-    },
-    {
         path: '/login',
         component: () => import('../../pages/auth/login'),
         name: 'login'
@@ -28,20 +7,24 @@ const routes = [
     {
         path: '/admin',
         component: () => import('../../layouts/admin'),
-        name: 'admin',
         meta: {
             requiresAuth: true,
         },
         children: [
             {
-                path: 'user',
+                path: '/',
+                component: () => import('../../pages/admin/index'),
+                name: 'admin',
+            },,
+            {
+                path: '/users',
                 name: 'user-admin',
                 components: {
                     admin: () => import('../../pages/admin/user')
                 }
             },
             {
-                path: 'products',
+                path: '/products',
                 name: 'products-admin',
                 components: {
                     admin: () => import('../../pages/admin/product')
@@ -50,8 +33,29 @@ const routes = [
         ]
     },
     {
+        path: '/',
+        component: () => import('../../layouts/default'),
+        children: [
+            {
+                path: '/',
+                component: () => import('../../pages/index'),
+                name: 'index',
+            },
+            {
+                path: '/checkout',
+                component: () => import('../../pages/cart/checkout'),
+                name: 'checkout',
+            },
+            {
+                path: '/:slug',
+                name: 'product-detail',
+                component: () => import('../../pages/products/detail')
+            }
+        ]
+    },
+    {
         path: '/404',
-        name: '404',
+        name: 'not-found',
         component: () => import('../../pages/errors/404')
     },
     {
