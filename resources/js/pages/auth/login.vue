@@ -75,11 +75,17 @@ export default {
     }
   },
   methods: {
-    sendLogin() {
+    async sendLogin() {
         try {
-            this.$store.dispatch('auth/retrieveToken', this.form)
-        } catch (error) {
-            console.error(error);
+            await this.$store.dispatch('retrieveToken', this.form)
+            this.$route.push({name: 'admin'})
+        } catch ({response}) {
+            this.$notify({
+                    group: 'notify',
+                    type: 'error',
+                    title: 'Error',
+                    text: response.message
+                });
         }
 
     },

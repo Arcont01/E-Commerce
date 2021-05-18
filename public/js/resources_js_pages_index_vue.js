@@ -89,6 +89,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "index",
@@ -101,7 +108,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     };
   },
   methods: {
-    getProducts: function getProducts() {
+    addToCart: function addToCart(product) {
       var _this = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
@@ -111,10 +118,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return axios.get("/api/product");
+                return _this.$store.dispatch("addToCart", {
+                  product: product
+                });
 
               case 3:
-                _this.products = _context.sent.data.data.products;
+                _this.$notify({
+                  group: "notify",
+                  type: "success",
+                  title: "Added to cart",
+                  text: product.name
+                });
+
                 _context.next = 8;
                 break;
 
@@ -130,19 +145,48 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee, null, [[0, 6]]);
       }))();
     },
-    getPage: function getPage() {
-      var _arguments = arguments,
-          _this2 = this;
+    getProducts: function getProducts() {
+      var _this2 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
-        var page;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
+                _context2.prev = 0;
+                _context2.next = 3;
+                return axios.get("/api/product");
+
+              case 3:
+                _this2.products = _context2.sent.data.data.products;
+                _context2.next = 8;
+                break;
+
+              case 6:
+                _context2.prev = 6;
+                _context2.t0 = _context2["catch"](0);
+
+              case 8:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, null, [[0, 6]]);
+      }))();
+    },
+    getPage: function getPage() {
+      var _arguments = arguments,
+          _this3 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
+        var page;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
                 page = _arguments.length > 0 && _arguments[0] !== undefined ? _arguments[0] : 1;
-                _context2.prev = 1;
-                _context2.next = 4;
+                _context3.prev = 1;
+                _context3.next = 4;
                 return axios.get("/api/product", {
                   params: {
                     page: page
@@ -150,20 +194,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 });
 
               case 4:
-                _this2.products = _context2.sent.data.data.products;
-                _context2.next = 9;
+                _this3.products = _context3.sent.data.data.products;
+                _context3.next = 9;
                 break;
 
               case 7:
-                _context2.prev = 7;
-                _context2.t0 = _context2["catch"](1);
+                _context3.prev = 7;
+                _context3.t0 = _context3["catch"](1);
 
               case 9:
               case "end":
-                return _context2.stop();
+                return _context3.stop();
             }
           }
-        }, _callee2, null, [[1, 7]]);
+        }, _callee3, null, [[1, 7]]);
       }))();
     }
   },
@@ -965,11 +1009,16 @@ var render = function() {
                                               squared: "",
                                               block: "",
                                               variant: "primary"
+                                            },
+                                            on: {
+                                              click: function($event) {
+                                                return _vm.addToCart(product)
+                                              }
                                             }
                                           },
                                           [
                                             _vm._v(
-                                              "\n                                    ADD TO CART\n                                "
+                                              "\n                  ADD TO CART\n                "
                                             )
                                           ]
                                         ),
@@ -1005,7 +1054,7 @@ var render = function() {
                                                       },
                                                       [
                                                         _vm._v(
-                                                          "\n                                        READ MORE\n                                    "
+                                                          "\n                    READ MORE\n                  "
                                                         )
                                                       ]
                                                     )
