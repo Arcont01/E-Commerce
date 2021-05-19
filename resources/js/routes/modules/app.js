@@ -12,23 +12,20 @@ const routes = [
         },
         children: [
             {
-                path: '/',
+                path: '',
                 component: () => import('../../pages/admin/index'),
                 name: 'admin',
-            },,
-            {
-                path: '/users',
-                name: 'user-admin',
-                components: {
-                    admin: () => import('../../pages/admin/user')
-                }
             },
             {
-                path: '/products',
+                path: 'users',
+                name: 'user-admin',
+                component: () => import('../../pages/admin/user')
+
+            },
+            {
+                path: 'products',
                 name: 'products-admin',
-                components: {
-                    admin: () => import('../../pages/admin/product')
-                }
+                component: () => import('../../pages/admin/product')
             }
         ]
     },
@@ -37,17 +34,17 @@ const routes = [
         component: () => import('../../layouts/default'),
         children: [
             {
-                path: '/',
+                path: '',
                 component: () => import('../../pages/index'),
                 name: 'index',
             },
             {
-                path: '/checkout',
+                path: 'checkout',
                 component: () => import('../../pages/cart/checkout'),
                 name: 'checkout',
             },
             {
-                path: '/:slug',
+                path: ':slug',
                 name: 'product-detail',
                 component: () => import('../../pages/products/detail')
             }

@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class ProductController extends Controller
 {
@@ -37,7 +38,7 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $validation = Validator::make($request->all(), [
-            'name' => ['required', 'string', 'max:191'],
+            'name' => ['required', 'string', 'max:191', 'unique:products,name'],
             'description' => ['required', 'string'],
             'price' => ['required', 'numeric'],
             'status' => ['required', 'boolean'],
@@ -131,9 +132,10 @@ class ProductController extends Controller
                 ], 404);
             }
 
+            $product = $product->first();
 
             $validation = Validator::make($request->all(), [
-                'name' => ['required', 'string', 'max:191'],
+                'name' => ['required', 'string', 'max:191', Rule::unique('products')->ignore($product->id)],
                 'description' => ['required', 'string'],
                 'price' => ['required', 'numeric'],
                 'status' => ['required', 'boolean'],
@@ -148,7 +150,7 @@ class ProductController extends Controller
                 ], 400);
             }
 
-            $product = $product->first();
+
             $product = $product->update([
                 'name' => $request->name,
                 'description' => $request->description,

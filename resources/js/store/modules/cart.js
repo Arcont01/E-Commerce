@@ -51,19 +51,23 @@ export default {
         removeFromCart(state, id) {
             const index = state.cart.findIndex(p => p.id === id);
             state.cart.splice(index, 1);
+        },
+        deleteCArt(state){
+            state.cart = [];
         }
     },
     actions: {
-        addToCart({ commit, dispatch }, payload) {
+        addToCart({ commit }, payload) {
             commit('addToCart', payload);
-            dispatch('saveCart');
         },
         saveCart(context) {
             localStorage.setItem('cart', JSON.stringify(context.state.cart));
         },
-        removeFromCart({ commit, dispatch }, id) {
+        removeFromCart({ commit }, id) {
             commit('removeFromCart', id);
-            dispatch('saveCart');
+        },
+        deleteCart({commit}){
+            commit('deleteCart')
         }
     }
 }

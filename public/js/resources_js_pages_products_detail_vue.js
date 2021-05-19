@@ -139,6 +139,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 });
 
               case 3:
+                _context2.next = 5;
+                return _this2.$store.dispatch('saveCart');
+
+              case 5:
                 _this2.$notify({
                   group: 'notify',
                   type: 'success',
@@ -146,19 +150,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   text: _this2.product.name
                 });
 
-                _context2.next = 8;
+                _context2.next = 10;
                 break;
 
-              case 6:
-                _context2.prev = 6;
+              case 8:
+                _context2.prev = 8;
                 _context2.t0 = _context2["catch"](0);
 
-              case 8:
+              case 10:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, null, [[0, 6]]);
+        }, _callee2, null, [[0, 8]]);
       }))();
     }
   },

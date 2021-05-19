@@ -15,6 +15,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "index"
 });
@@ -109,7 +117,36 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div")
+  return _c(
+    "main",
+    { attrs: { role: "main" } },
+    [
+      _c(
+        "b-container",
+        { staticClass: "py-5" },
+        [
+          _c(
+            "b-row",
+            { attrs: { "align-h": "center" } },
+            [
+              _c(
+                "b-col",
+                { staticClass: "text-center", attrs: { cols: "12" } },
+                [
+                  _c("h1", { staticClass: "font-weight-bold" }, [
+                    _vm._v("Welcome to admin")
+                  ])
+                ]
+              )
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

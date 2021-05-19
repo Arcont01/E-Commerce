@@ -106,11 +106,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return _this.$store.dispatch('retrieveToken', _this.form);
+                return _this.$store.dispatch("retrieveToken", _this.form);
 
               case 3:
-                _this.$route.push({
-                  name: 'admin'
+                _this.$router.push({
+                  name: "admin"
                 });
 
                 _context.next = 10;
@@ -122,9 +122,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 response = _context.t0.response;
 
                 _this.$notify({
-                  group: 'notify',
-                  type: 'error',
-                  title: 'Error',
+                  group: "notify",
+                  type: "error",
+                  title: "Error",
                   text: response.message
                 });
 

@@ -90,6 +90,7 @@ export default {
     async addToCart(product) {
       try {
         await this.$store.dispatch("addToCart", { product });
+        await this.$store.dispatch('saveCart');
         this.$notify({
           group: "notify",
           type: "success",

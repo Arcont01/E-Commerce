@@ -405,7 +405,7 @@ var render = function() {
     [
       _c("admin-header"),
       _vm._v(" "),
-      _c("router-view", { attrs: { name: _vm.admin } }),
+      _c("router-view"),
       _vm._v(" "),
       _c("app-footer")
     ],

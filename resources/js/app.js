@@ -24,6 +24,13 @@ Object.keys(rules).forEach(rule => {
 localize('en', en)
 Vue.component('ValidationObserver', ValidationObserver)
 Vue.component('ValidationProvider', ValidationProvider)
+Vue.filter('moneyFormat', (val) => {
+    if (!val) return ''
+    return new Intl.NumberFormat('es-MX', {
+        style: 'currency',
+        currency: 'MXN',
+    }).format(val)
+})
 Vue.use(Notifications);
 Vue.use(VueRouter)
 Vue.use(BootstrapVue)

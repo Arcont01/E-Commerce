@@ -81,6 +81,7 @@ export default {
         async addToCart() {
             try {
                 await this.$store.dispatch('addToCart', {product: this.product, quantity: this.form.selected})
+                await this.$store.dispatch('saveCart');
                 this.$notify({
                     group: 'notify',
                     type: 'success',

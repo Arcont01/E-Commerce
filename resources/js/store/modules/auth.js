@@ -2,11 +2,14 @@ import vue from 'Vue';
 
 export default {
     state: {
-        token: localStorage.getItem('access_token') || null
+        token: localStorage.getItem('access_token') ? localStorage.getItem('access_token') || '' : ''
     },
     getters: {
-        loggedIn(state) {
+        loggedIn: state => {
             return state.token !== null
+        },
+        getToken: state =>{
+            return state.token
         }
     },
     mutations: {

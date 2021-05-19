@@ -1,5 +1,7 @@
 <template>
-
+ <main role="main">
+    <p>hola</p>
+  </main>
 </template>
 
 <script>

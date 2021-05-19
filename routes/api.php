@@ -19,6 +19,12 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('me', [\App\Http\Controllers\UserController::class, 'me'])->name('logout');
     Route::post('logout', [\App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
     Route::post('register', [\App\Http\Controllers\Auth\RegisterController::class, 'register'])->name('register');
+    Route::prefix('user')->group(function(){
+        Route::get('/', [\App\Http\Controllers\UserController::class, 'index'])->name('user.index');
+        Route::get('/{user}', [\App\Http\Controllers\UserController::class, 'show'])->name('user.show');
+        Route::put('/{user}', [\App\Http\Controllers\UserController::class, 'update'])->name('user.update');
+        Route::delete('/{user}', [\App\Http\Controllers\UserController::class, 'delete'])->name('user.delete');
+    });
 });
 
 Route::prefix('product')->group(function (){

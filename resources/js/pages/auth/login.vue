@@ -7,7 +7,7 @@
             <template #header>
               <h1 class="mb-0 text-center font-weight-bold">Login</h1>
             </template>
-            <ValidationObserver v-slot="{invalid}">
+            <ValidationObserver v-slot="{ invalid }">
               <b-form @submit.prevent="sendLogin">
                 <ValidationProvider
                   name="E-Mail"
@@ -70,24 +70,23 @@ export default {
     return {
       form: {
         email: "",
-        password: ""
-      }
-    }
+        password: "",
+      },
+    };
   },
   methods: {
     async sendLogin() {
-        try {
-            await this.$store.dispatch('retrieveToken', this.form)
-            this.$route.push({name: 'admin'})
-        } catch ({response}) {
-            this.$notify({
-                    group: 'notify',
-                    type: 'error',
-                    title: 'Error',
-                    text: response.message
-                });
-        }
-
+      try {
+        await this.$store.dispatch("retrieveToken", this.form);
+        this.$router.push({ name: "admin" });
+      } catch ({ response }) {
+        this.$notify({
+          group: "notify",
+          type: "error",
+          title: "Error",
+          text: response.message,
+        });
+      }
     },
   },
 };
