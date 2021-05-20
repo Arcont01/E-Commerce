@@ -126,7 +126,7 @@
                     </ValidationProvider>
                   </b-form-group>
                 </b-form-row>
-                <b-form-group>
+                <b-form-group v-show="!disableEdit">
                   <ValidationProvider
                     name="Image"
                     rules="image|size:5120|mimes:image/jpeg,image/jpg"
@@ -138,6 +138,9 @@
                       :state="errors[0] ? false : valid ? true : null"
                       placeholder="Choose a file or drop it here..."
                     ></b-form-file>
+                    <b-form-text >
+                      Leave blank if you don't want to change the image
+                    </b-form-text>
                     <b-form-invalid-feedback>
                       {{ errors[0] }}
                     </b-form-invalid-feedback>
