@@ -15,6 +15,10 @@ This application is a example to make a ecommerce with Vue.Js and Laravel
 7. Run the migrations and seeders with the command `php artisan migrate --seed` in the project root directory.
 8. See the aplication un your IP or your custom domain to this application
 
+## Login in the admin
+
+Enter to the route **/admin** and use the credentials email: `admin@admin.com` and password: `password`
+
 ## Steps to unit testing
 
 1. Run the command `php artisan test` in the root directory to test the user module.
