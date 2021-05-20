@@ -54,7 +54,7 @@ class UserController extends Controller
             return response([
                 'status' => 'error',
                 'message' => "Server error"
-            ]);
+            ], 500);
         }
     }
 
@@ -109,7 +109,7 @@ class UserController extends Controller
             return response([
                 'status' => 'error',
                 'message' => "Server error"
-            ]);
+            ], 500);
         }
     }
 }

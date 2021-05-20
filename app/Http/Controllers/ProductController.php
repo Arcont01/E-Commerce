@@ -124,7 +124,7 @@ class ProductController extends Controller
             return response([
                 'status' => 'error',
                 'message' => "Server error"
-            ]);
+            ], 500);
         }
     }
 
@@ -226,7 +226,7 @@ class ProductController extends Controller
             return response([
                 'status' => 'error',
                 'message' => "Server error"
-            ]);
+            ], 500);
         }
     }
 }
