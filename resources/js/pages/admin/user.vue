@@ -76,7 +76,7 @@
                 </b-form-invalid-feedback>
               </ValidationProvider>
             </b-form-group>
-            <b-form-row>
+            <b-form-row v-show="!disableEdit">
               <b-form-group class="col-md-6">
                 <ValidationProvider
                   vid="password"
@@ -91,6 +91,9 @@
                     placeholder="Password"
                     v-model="form.password"
                   ></b-form-input>
+                  <b-form-text>
+                      Leave blank if you don't want to change the password
+                    </b-form-text>
                   <b-form-invalid-feedback>
                     {{ errors[0] }}
                   </b-form-invalid-feedback>
