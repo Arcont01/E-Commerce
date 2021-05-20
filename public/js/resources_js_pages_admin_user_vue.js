@@ -265,7 +265,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   methods: {
     enableEdit: function enableEdit() {
-      this.disableEdit = false;
+      this.disableEdit = !this.disableEdit;
     },
     editUser: function editUser(user) {
       var _this = this;
@@ -368,7 +368,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _context2.t0 = _context2["catch"](0);
                 response = _context2.t0.response;
 
-                _this2.getUser();
+                _this2.getUsers();
 
                 _this2.$notify({
                   group: "notify",
@@ -702,7 +702,7 @@ var render = function() {
                                       }
                                     }
                                   },
-                                  [_c("i", { staticClass: "fas fa-trash-alt" })]
+                                  [_c("i", { staticClass: "fas fa-eye" })]
                                 )
                               ],
                               1
@@ -1019,6 +1019,14 @@ var render = function() {
                                 _c(
                                   "b-button",
                                   {
+                                    directives: [
+                                      {
+                                        name: "show",
+                                        rawName: "v-show",
+                                        value: !_vm.disableEdit,
+                                        expression: "!disableEdit"
+                                      }
+                                    ],
                                     attrs: {
                                       type: "submit",
                                       variant: "primary",
@@ -1027,7 +1035,7 @@ var render = function() {
                                       disabled: invalid
                                     }
                                   },
-                                  [_vm._v("Add")]
+                                  [_vm._v("Edit")]
                                 )
                               ],
                               1

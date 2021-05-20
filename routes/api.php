@@ -28,10 +28,11 @@ Route::middleware('auth:sanctum')->group(function () {
 });
 
 Route::prefix('product')->group(function (){
-    Route::get('/', [\App\Http\Controllers\ProductController::class, 'index'])->name('product.index');
+    Route::get('/paginate', [\App\Http\Controllers\ProductController::class, 'indexPaginate'])->name('product.index.paginate');
     Route::get('/{slug}', [\App\Http\Controllers\ProductController::class, 'show'])->name('product.show');
 
     Route::middleware('auth:sanctum')->group(function (){
+        Route::get('/', [\App\Http\Controllers\ProductController::class, 'index'])->name('product.index');
         Route::post('/', [\App\Http\Controllers\ProductController::class, 'store'])->name('product.store');
         Route::put('/{slug}', [\App\Http\Controllers\ProductController::class, 'update'])->name('product.update');
         Route::delete('/{slug}', [\App\Http\Controllers\ProductController::class, 'delete'])->name('product.delete');

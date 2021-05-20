@@ -26,8 +26,7 @@
                     ><i class="fas fa-trash-alt"></i
                   ></b-button>
                   <b-button size="sm" variant="info" @click="getUser(user.id)"
-                    ><i class="fas fa-trash-alt"></i
-                  ></b-button>
+                    ><i class="fas fa-eye"></i></b-button>
                 </td>
               </tr>
             </tbody>
@@ -117,12 +116,13 @@
                 </ValidationProvider>
               </b-form-group>
               <b-button
+              v-show="!disableEdit"
                 type="submit"
                 variant="primary"
                 squared
                 block
                 :disabled="invalid"
-                >Add</b-button
+                >Edit</b-button
               >
             </b-form-row>
           </b-form>
@@ -239,7 +239,7 @@ export default {
   },
   methods: {
     enableEdit() {
-      this.disableEdit = false;
+      this.disableEdit = !this.disableEdit;
     },
     async editUser(user) {
       try {
@@ -286,7 +286,7 @@ export default {
           this.$bvModal.show("modal-see");
         });
       } catch ({ response }) {
-        this.getUser();
+        this.getUsers();
         this.$notify({
           group: "notify",
           type: "error",

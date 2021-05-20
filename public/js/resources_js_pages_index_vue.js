@@ -159,7 +159,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return axios.get("/api/product");
+                return axios.get("/api/product/paginate");
 
               case 3:
                 _this2.products = _context2.sent.data.data.products;
@@ -191,7 +191,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 page = _arguments.length > 0 && _arguments[0] !== undefined ? _arguments[0] : 1;
                 _context3.prev = 1;
                 _context3.next = 4;
-                return axios.get("/api/product", {
+                return axios.get("/api/product/paginate", {
                   params: {
                     page: page
                   }

@@ -101,13 +101,13 @@ export default {
     },
     async getProducts() {
       try {
-        this.products = (await axios.get(`/api/product`)).data.data.products;
+        this.products = (await axios.get(`/api/product/paginate`)).data.data.products;
       } catch (error) {}
     },
     async getPage(page = 1) {
       try {
         this.products = (
-          await axios.get(`/api/product`, {
+          await axios.get(`/api/product/paginate`, {
             params: {
               page,
             },

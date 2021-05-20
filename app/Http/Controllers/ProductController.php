@@ -18,13 +18,29 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function indexPaginate()
     {
         return response([
             'status' => 'success',
             'message' => 'ok',
             'data' => [
                 'products' => Product::where('status', true)->paginate(9)
+            ]
+        ]);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return response([
+            'status' => 'success',
+            'message' => 'ok',
+            'data' => [
+                'products' => Product::all()
             ]
         ]);
     }
@@ -45,15 +61,15 @@ class ProductController extends Controller
             'image' => ['required', 'image', 'mimes:jpg,png', 'max:5120']
         ]);
 
-        if($validation->fails()){
+        if ($validation->fails()) {
             return response()->json([
                 'status' => 'error',
-                'message' => $validation -> errors() -> first(),
-                'data' => $validation -> errors(),
+                'message' => $validation->errors()->first(),
+                'data' => $validation->errors(),
             ], 400);
         }
 
-        try{
+        try {
             $product = Product::create([
                 'name' => $request->name,
                 'description' => $request->description,
@@ -61,13 +77,14 @@ class ProductController extends Controller
                 'status' => $request->status,
             ]);
 
+            $product->addMedia($request->file('image'))->toMediaCollection('images');
+
             return response([
                 'status' => 'success',
                 'message' => "The product {$product->name} has been created",
                 'data' => []
             ]);
-
-        }catch (\Throwable $th){
+        } catch (\Throwable $th) {
             Log::error($th);
             return response([
                 'status' => 'error',
@@ -102,7 +119,6 @@ class ProductController extends Controller
                     'product' => new ProductResource($product->first())
                 ]
             ]);
-
         } catch (\Throwable $th) {
             Log::error($th);
             return response([
@@ -139,24 +155,29 @@ class ProductController extends Controller
                 'description' => ['required', 'string'],
                 'price' => ['required', 'numeric'],
                 'status' => ['required', 'boolean'],
-                'image' => ['required', 'image', 'mimes:jpg,png', 'max:5120']
+                'image' => ['nullable', 'image', 'mimes:jpg,png', 'max:5120']
             ]);
 
-            if($validation->fails()){
+            if ($validation->fails()) {
                 return response()->json([
                     'status' => 'error',
-                    'message' => $validation -> errors() -> first(),
-                    'data' => $validation -> errors(),
+                    'message' => $validation->errors()->first(),
+                    'data' => $validation->errors(),
                 ], 400);
             }
 
 
-            $product = $product->update([
+            $product->update([
                 'name' => $request->name,
                 'description' => $request->description,
-                'price' => $request->description,
+                'price' => $request->price,
                 'status' => $request->status
             ]);
+
+            if(!empty($request->image)){
+                $product->clearMediaCollection('images');
+                $product->addMedia($request->file('image'))->toMediaCollection('images');
+            }
 
             return response([
                 'status' => 'success',
@@ -165,13 +186,12 @@ class ProductController extends Controller
                     'product' => new ProductResource($product)
                 ]
             ]);
-
         } catch (\Throwable $th) {
             Log::error($th);
             return response([
                 'status' => 'error',
                 'message' => "Server error"
-            ]);
+            ], 500);
         }
     }
 
@@ -201,7 +221,6 @@ class ProductController extends Controller
                 'message' => "The product $name has been deleted",
                 'data' => []
             ]);
-
         } catch (\Throwable $th) {
             Log::error($th);
             return response([

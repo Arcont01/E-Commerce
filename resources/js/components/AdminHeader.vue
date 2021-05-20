@@ -14,7 +14,7 @@
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
       <b-collapse id="nav-collapse" is-nav>
-        <b-navbar-nav>
+        <b-navbar-nav class="ml-auto">
           <router-link
             custom
             :to="{ name: 'user-admin' }"
@@ -33,8 +33,29 @@
               >Products</b-nav-item
             >
           </router-link>
+          <b-nav-item @click="logOut">Log Out</b-nav-item>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
   </div>
 </template>
+
+<script>
+export default {
+  methods: {
+    async logOut() {
+      try {
+        await this.$store.dispatch("destroyToken");
+        this.$router.push({ name: "login" });
+      } catch ({ response }) {
+        this.$notify({
+          group: "notify",
+          type: "error",
+          title: "Error",
+          text: response.message,
+        });
+      }
+    },
+  },
+};
+</script>
