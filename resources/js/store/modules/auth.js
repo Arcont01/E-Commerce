@@ -2,7 +2,7 @@ import vue from 'Vue';
 
 export default {
     state: {
-        token: localStorage.getItem('access_token') ? localStorage.getItem('access_token') || '' : ''
+        token: localStorage.getItem('access_token') ? localStorage.getItem('access_token') || null : null
     },
     getters: {
         loggedIn: state => {

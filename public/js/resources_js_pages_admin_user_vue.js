@@ -247,6 +247,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "User",
@@ -888,6 +891,16 @@ var render = function() {
                             _vm._v(" "),
                             _c(
                               "b-form-row",
+                              {
+                                directives: [
+                                  {
+                                    name: "show",
+                                    rawName: "v-show",
+                                    value: !_vm.disableEdit,
+                                    expression: "!disableEdit"
+                                  }
+                                ]
+                              },
                               [
                                 _c(
                                   "b-form-group",
@@ -931,6 +944,12 @@ var render = function() {
                                                     expression: "form.password"
                                                   }
                                                 }),
+                                                _vm._v(" "),
+                                                _c("b-form-text", [
+                                                  _vm._v(
+                                                    "\n                    Leave blank if you don't want to change the password\n                  "
+                                                  )
+                                                ]),
                                                 _vm._v(" "),
                                                 _c("b-form-invalid-feedback", [
                                                   _vm._v(
