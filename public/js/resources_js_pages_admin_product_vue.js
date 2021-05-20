@@ -299,6 +299,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "User",
@@ -1005,7 +1008,7 @@ var render = function() {
                                             _c("ValidationProvider", {
                                               attrs: {
                                                 name: "Status",
-                                                rules: "required|included:0,1"
+                                                rules: "required|oneOf:0,1"
                                               },
                                               scopedSlots: _vm._u(
                                                 [
@@ -1156,6 +1159,16 @@ var render = function() {
                                     _vm._v(" "),
                                     _c(
                                       "b-form-group",
+                                      {
+                                        directives: [
+                                          {
+                                            name: "show",
+                                            rawName: "v-show",
+                                            value: !_vm.disableEdit,
+                                            expression: "!disableEdit"
+                                          }
+                                        ]
+                                      },
                                       [
                                         _c("ValidationProvider", {
                                           attrs: {
@@ -1197,6 +1210,12 @@ var render = function() {
                                                         expression: "form.image"
                                                       }
                                                     }),
+                                                    _vm._v(" "),
+                                                    _c("b-form-text", [
+                                                      _vm._v(
+                                                        "\n                    Leave blank if you don't want to change the image\n                  "
+                                                      )
+                                                    ]),
                                                     _vm._v(" "),
                                                     _c(
                                                       "b-form-invalid-feedback",
@@ -1442,7 +1461,7 @@ var render = function() {
                                     _c("ValidationProvider", {
                                       attrs: {
                                         name: "Status",
-                                        rules: "required|included:0,1"
+                                        rules: "required|oneOf:0,1"
                                       },
                                       scopedSlots: _vm._u(
                                         [
