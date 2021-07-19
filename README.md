@@ -1,4 +1,4 @@
-# Exam E-Commerce
+# E-Commerce
 
 ## About project
 
